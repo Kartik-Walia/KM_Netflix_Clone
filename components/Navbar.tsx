@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { BsChevronDown } from 'react-icons/bs';
+import { BsChevronDown, BsSearch, BsBell } from 'react-icons/bs';
 
 import NavbarItem from "./Navbaritem";
 import MobileMenu from "./MobileMenu";
@@ -45,11 +45,29 @@ const Navbar = () => {
                     <NavbarItem label="My List"/>
                     <NavbarItem label="Browse by languages"/>
                 </div>
-                {/* Create div for right side profile menu (gonna be visible on mobile screens) */}
+
+                {/* Create div for Mobile menu (gonna be visible on mobile screens) */}
                 <div onClick={toggleMobileMenu} className="lg:hidden flex flex-row items-center gap-2 ml-8 cursor-pointer relative">
                     <p className="text-white text-sm">Browse</p>
                     <BsChevronDown className="text-white transition"/>
                     <MobileMenu visible={showMobileMenu}/>
+                </div>
+
+                {/* Create div for Profile menu */}
+                <div className='flex flex-row ml-auto gap-7 items-center'>
+                    <div className='text-gray-200 hover:text-gray-300 cursor-pointer transition'>
+                        <BsSearch/>    {/* Search icon  */}
+                    </div>
+                    <div className='text-gray-200 hover:text-gray-300 cursor-pointer transition'>
+                        <BsBell/>    {/* Bell icon  */}
+                    </div>
+                    <div className="flex flex-row items-center gap-2 cursor-pointer relative">
+                        <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
+                            <img src="/images/default-blue.png" alt="" />
+                        </div>
+                        <BsChevronDown className="text-white transition"/>
+                        
+                    </div>
                 </div>
             </div>
         </nav>
