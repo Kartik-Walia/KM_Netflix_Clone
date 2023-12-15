@@ -20,10 +20,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const randomMovies = await prismadb.movie.findMany({
             take: 1,
             skip: randomIndex
+            // skip: Math.min(randomIndex, movieCount - 1)
         });    // So we're using pagination to make our algorithm for a random movie
 
         // This is an array, we only want 1 movie so just pick only one inside, I know it's going to be 0 the only one bcoz i explicitly say take only one from this many movies
-        return res.status(200).json(randomMovies[0])
+        return res.status(200).json(randomMovies[0]);
     } catch (error) {
         console.log(error);
         return res.status(400).end();
