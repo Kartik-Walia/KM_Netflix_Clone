@@ -1,3 +1,4 @@
+import useCurrentUser from "@/hooks/useCurrentUser";
 import { signOut } from "next-auth/react";
 import React from "react";
 
@@ -6,6 +7,8 @@ interface AccountMenuProps {
 }
 
 const AccountMenu: React.FC<AccountMenuProps> = ({visible}) => {
+    // const { data: currentUser } = useCurrentUser();
+
     if(!visible) {
         return null;
     }
@@ -17,7 +20,8 @@ const AccountMenu: React.FC<AccountMenuProps> = ({visible}) => {
                 {/* group/item is just a way that we can target multiple groups inside another group */}
                     <img className="w-8 rounded-md" src="/images/default-blue.png" alt="" />
                     <p className="text-white text-sm group-hover/item:underline">
-                        Username
+                        {/* {currentUser?.name} */}
+                        username
                     </p>
                 </div>
                 <hr className="bg-gray-600 border-0 h-px my-4"/>
