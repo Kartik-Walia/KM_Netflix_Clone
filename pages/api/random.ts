@@ -10,7 +10,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-        await serverAuth(req);  // All i wanna do is check if we're logged in (thatswhy we're not extracting the current user)
+        await serverAuth(req, res);  // All i wanna do is check if we're logged in (thatswhy we're not extracting the current user)
 
         // Let's find our random movie that'll be loaded every time we refresh the page
         const movieCount = await prismadb.movie.count();    // We want to get counts of all movies is our database wihtout loading them 

@@ -1,3 +1,4 @@
+// API route to add or remove our favorites
 import { NextApiRequest, NextApiResponse } from "next";
 import { without } from "lodash";
 
@@ -8,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
         // Handling POST request (User favoriting a movie)
         if (req.method === 'POST') {
-            const { currentUser } = await serverAuth(req);
+            const { currentUser } = await serverAuth(req, res);
 
             const { movieId } = req.body;
 
@@ -40,7 +41,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         // Handling DELETE request (User unfavoriting a movie)
         if (req.method === 'DELETE') {
-            const { currentUser } = await serverAuth(req);
+            const { currentUser } = await serverAuth(req, res);
 
             const { movieId } = req.body;
 
@@ -73,6 +74,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(405).end();
     } catch (error) {
         console.log(error);
-        return res.status(400).end();
+
+        return res.status(500).end();
     }
 }
