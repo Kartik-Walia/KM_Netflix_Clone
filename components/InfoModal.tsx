@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { AiOutlineClose } from 'react-icons/ai';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 
 import PlayButton from "./PlayButton";
 import FavoriteButton from "./FavoriteButton";
@@ -33,7 +33,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose}) => {
     }
 
     return (
-        // First;y we need to cerate big overflow, so gve big z-index of 50
+        // Firstly we need to cerate big overflow, so gve big z-index of 50
         <div 
             className="
                 z-50 
@@ -66,6 +66,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose}) => {
                         ></video>
                         {/* Close Button */}
                         <div 
+                            onClick={() => handleClose()}
                             className="
                                 cursor-pointer 
                                 absolute 
@@ -80,9 +81,8 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose}) => {
                                 items-center 
                                 justify-center
                             " 
-                            onClick={() => {handleClose}}
                         >
-                            <AiOutlineClose className="text-white" size={20}/>
+                            <XMarkIcon className="text-white w-6"/>
                         </div>
 
                         <div className="absolute bottom-[10%] left-10">
@@ -116,7 +116,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose}) => {
             </div>
             
         </div>
-    )
+    );
 }
 
 export default InfoModal;
