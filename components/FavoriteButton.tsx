@@ -15,9 +15,16 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
     const { data: currentUser, mutate } = useCurrentUser();
 
     const isFavorite = useMemo(() => {
-        const list = currentUser?.favoriteIds || [];
+        console.log('currentUser:', currentUser);
+        console.log('movieId:', movieId);
 
-        return list.includes(movieId);
+        const list = currentUser?.favoriteIds || [];
+        console.log('Favorite IDs:', list);
+
+        const result = list.includes(movieId);
+        console.log('isFavorite:', result);
+
+        return result;
     }, [currentUser, movieId]);
 
     const toggleFavorites = useCallback(async () => {
